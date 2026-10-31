@@ -41,6 +41,16 @@ cp -r Visio-painting ~/.claude/skills/
 绘图脚本与参考文档位于：<绝对路径>/Visio-painting/scripts、/reference
 ```
 
+### Pi（pi coding agent）
+```bash
+cp -r Visio-painting ~/.pi/agent/skills/visio-painting      # 全局
+cp -r Visio-painting <repo>/.pi/skills/visio-painting       # 项目级（只对当前仓库生效）
+```
+目录名建议与 frontmatter 里的 `name: visio-painting` 保持一致。装好后可用 `/skill:visio-painting`
+强制加载，也会按 `description` 自动匹配；改了 `SKILL.md` 在会话里用 `/reload` 生效。
+> Agent Skills 规范要求 `description` 字段（本技能的 `summary` / `read_when` 是非标准字段，
+> 仅作兼容保留），缺 `description` 时 Pi 不会加载该技能。
+
 ### 通用（任何能执行 Python 的 Agent）
 不需要"安装"，只要告诉它两件事：
 
@@ -97,7 +107,8 @@ Visio-painting/
 ├── PORTABLE.md           本文件
 ├── scripts/              visio_engine.py / word_emf.py / recipes/
 ├── reference/            notation.md（图型规范）/ stencils.md（模具图元名）
-└── examples/             论文插图全流程示例
+├── examples/             论文插图全流程示例
+└── tests/                布局回归测试（无需 Visio）
 ```
 
 约定：`脚本只依赖 scripts/ 内部文件 + 系统 Visio`，不读取任何项目数据，
