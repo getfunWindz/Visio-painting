@@ -108,7 +108,7 @@ class Draw:
             self.doc = _MASTER["doc"]
             self.page = self.doc.Pages.Add()
         else:
-            self.doc = app.Documents.Add("")
+            self.doc = self.app.Documents.Add("")
             self.page = self.doc.Pages.Item(1)
         if name:
             try:
