@@ -2,11 +2,7 @@
 
 用代码画 Visio 工程图：厘米坐标精确摆放，**一张图同时得到可视图（png / svg / emf）与可编辑的 `.vsdx` 源文件**。
 
-![platform](https://img.shields.io/badge/platform-Windows-0078D4?style=flat-square)
-![Visio](https://img.shields.io/badge/Visio-2016%2B-3955A3?style=flat-square)
-![Python](https://img.shields.io/badge/Python-3.9%2B-3776AB?style=flat-square)
-![output](https://img.shields.io/badge/output-png%20%C2%B7%20svg%20%C2%B7%20emf%20%2B%20vsdx-2B4A7D?style=flat-square)
-![license](https://img.shields.io/badge/license-MIT-3DA639?style=flat-square)
+![platform](https://img.shields.io/badge/platform-Windows-0078D4?style=flat-square) ![visio](https://img.shields.io/badge/Visio-2016%2B-3955A3?style=flat-square) ![python](https://img.shields.io/badge/Python-3.9%2B-3776AB?style=flat-square) ![output](https://img.shields.io/badge/output-png%20%C2%B7%20svg%20%C2%B7%20emf%20%2B%20vsdx-2B4A7D?style=flat-square) ![license](https://img.shields.io/badge/license-MIT-3DA639?style=flat-square)
 
 给毕业设计、课程设计、需求规格说明书 / 设计文档画成体系的工程插图：UML 用例图 / 活动图 / 时序图、陈氏 E-R 图、分层架构图、模块结构图、网络拓扑图。
 
@@ -14,9 +10,9 @@
 
 下面两张图是 `scripts/recipes/network.py`、`scripts/recipes/architecture.py` **直接跑出来的结果**，未手工修图：
 
-<img src="assets/readme/preview-network.png" alt="网络架构图：用户终端 → Internet → 防火墙 → Nginx 代理 → 应用服务器 → 大模型平台，下方数据服务器组为 MySQL / Redis / MinIO">
+![网络架构图：用户终端 → Internet → 防火墙 → Nginx 代理 → 应用服务器 → 大模型平台，下方数据服务器组为 MySQL / Redis / MinIO](assets/readme/preview-network.png)
 
-<img src="assets/readme/preview-architecture.png" alt="分层架构图：表现层、应用层、业务层、智能能力层、数据层、基础设施层，右侧竖带为安全与运维保障体系">
+![分层架构图：表现层、应用层、业务层、智能能力层、数据层、基础设施层，右侧竖带为安全与运维保障体系](assets/readme/preview-architecture.png)
 
 每张图还会同时写出一份同名 `.vsdx`：打开就是这一张图，改完不影响其他图。
 
