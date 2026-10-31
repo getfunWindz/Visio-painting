@@ -15,6 +15,18 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(HERE, "..", "scripts"))
 sys.path.insert(0, os.path.join(HERE, "..", "scripts", "recipes"))
 
+# 本测试只检查几何关系，不启动 Visio；非 Windows 上桩掉 win32com，方便在任意平台跑 pytest。
+try:
+    import win32com.client  # noqa: F401
+except ImportError:
+    import types
+    _pkg = types.ModuleType("win32com")
+    _client = types.ModuleType("win32com.client")
+    _client.Dispatch = lambda *a, **kw: None
+    _pkg.client = _client
+    sys.modules["win32com"] = _pkg
+    sys.modules["win32com.client"] = _client
+
 PT2CM = 2.54 / 72.0        # 1pt = 0.03528cm，与 visio_engine.fit_size 的换算一致
 MARGIN = 0.35              # 页面四周最小留白（cm）
 
@@ -143,7 +155,6 @@ def test_example_usecase_layout():
     sys.path.insert(0, os.path.join(HERE, "..", "examples"))
     import paper_figure_set as ex
     _check_usecase(ex.fig_usecase(FakeSession()))
-
 
 
 if __name__ == "__main__":
