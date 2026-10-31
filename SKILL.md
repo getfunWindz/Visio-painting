@@ -1,5 +1,8 @@
 ---
-name: Visio-painting
+name: visio-painting
+description: 用本机 Visio（COM 自动化）画软件工程类插图：UML 用例图/活动图/时序图、陈氏 E-R 图、分层架构图、模块结构图、网络拓扑图。每张图产出可视图（png/svg/emf）+ 同名单页 .vsdx 源文件，统一落在项目「图片输出/」。当用户说「画个图/出图/软件工程绘图/visio 自动化绘图」，或需要画用例图、活动图、时序图、类图、状态图、E-R 图、数据流图、架构图、部署图、拓扑图、流程图、模块结构图，或需要可编辑的 vsdx / 插 Word 不糊的矢量图时使用。仅限 Windows 且已安装 Visio。
+license: MIT
+compatibility: Windows + Microsoft Visio 2016/2019/2021/365 + Python 3.9+ + pywin32
 summary: 用本机 Visio（COM 自动化）绘制软件工程类图表——UML 用例图/活动图/时序图、陈氏 E-R 图、分层架构图、模块结构图、网络拓扑图；输出「一图一档」：每张图给一张 png/jpg 可视图 + 一个同名 vsdx 源文件，统一落在当前项目的「图片输出」文件夹
 read_when:
   - 用户说「软件工程绘图」「visio 自动化绘图」「帮我画图」「画个图」「出图」「画张示意图」
@@ -257,5 +260,6 @@ Visio-painting/
 ├── reference/
 │   ├── notation.md           ← 各图型符号规范与间距经验值
 │   └── stencils.md           ← Visio 中文模具图元名清单
-└── examples/                 ← 一份完整的论文图集脚本（可当模板复制）
+├── examples/                 ← 一份完整的论文图集脚本（可当模板复制）
+└── tests/                    ← 布局回归测试（不需要 Visio）
 ```
