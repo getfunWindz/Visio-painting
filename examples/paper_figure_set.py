@@ -22,19 +22,20 @@ from visio_engine import *   # noqa: E402
 
 # ------------------------------------------------------------------ 图1：用例图
 def fig_usecase(S):
-    d = S.draw(14.1, 9.2, "图3-1 系统用例图")
+    d = S.draw(14.1, 9.6, "图3-1 系统用例图")
     BX, BW = 7.55, 5.45
-    d.rect(BX, 4.55, BW, 7.78, fill=None, line_w=1.0)
+    # 边框纵向 0.92–8.92；标题墨迹 0.45–0.79，与边框上沿留 0.13cm（不压线）
+    d.rect(BX, 4.92, BW, 8.00, fill=None, line_w=1.0)
     d.text(BX, 0.62, "智能创作", w=BW, h=0.5, size=9.5)
 
     names = ["文章智能续写", "全文润色优化", "文本内容提炼",
              "内容精简改写", "创作大纲生成"]
-    P = {n: (BX, 1.55 + i * 1.50) for i, n in enumerate(names)}
+    P = {n: (BX, 1.92 + i * 1.50) for i, n in enumerate(names)}
     for n, (cx, cy) in P.items():
         d.oval(cx, cy, 2.75, 1.02, n, fill=C_BLUE_L, line_color=C_BLUE_D,
                line_w=0.9, size=9)
 
-    UA, AC = (1.90, 4.55), (12.55, 4.55)
+    UA, AC = (1.90, 4.92), (12.55, 4.92)
     for n in names:                                  # 从躯干中线引出关联线
         d.line(UA[0], UA[1], BX - 1.375, P[n][1], line_w=0.8)
     d.line(AC[0], AC[1], BX + 1.375, P["文本内容提炼"][1], line_w=0.8)
