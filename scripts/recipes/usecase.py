@@ -13,20 +13,23 @@ from visio_engine import *
 
 
 def build(app):
-    d = Draw(app, 14.1, 9.2, "用例图示例")
+    d = Draw(app, 14.1, 9.6, "用例图示例")
     BX, BW = 7.55, 5.45                     # 边界中心与宽度
-    d.rect(BX, 4.55, BW, 7.78, fill=None, line_w=1.0)
+    # 页面高度要同时容纳：上留白 0.35 + 标题字高 0.335 + 间距 0.05 + 边框 + 下留白 0.35。
+    # 边框纵向 0.92–8.92（高 8.0），标题墨迹 0.45–0.79，与边框上沿留 0.13cm。
+    d.rect(BX, 4.92, BW, 8.00, fill=None, line_w=1.0)
     d.text(BX, 0.62, "智能创作", w=BW, h=0.5, size=9.5)
 
     names = ["文章智能续写", "全文润色优化", "文本内容提炼", "内容精简改写", "创作大纲生成"]
     UC = dict(fill=C_BLUE_L, line_color=C_BLUE_D, line_w=0.9, size=9)
-    P = {n: (BX, 1.55 + i * 1.50) for i, n in enumerate(names)}   # 列中心 = 边界中心
+    # 用例列在边框内上下居中：(8.00 - (4*1.50 + 1.02)) / 2 = 0.49 → 首行中心 1.92
+    P = {n: (BX, 1.92 + i * 1.50) for i, n in enumerate(names)}   # 列中心 = 边界中心
     for n, (cx, cy) in P.items():
         d.oval(cx, cy, 2.75, 1.02, n, **UC)
 
     # 关联线必须从参与者躯干中线（cx, cy）引出，不能从图形外侧的空白点
     # 或手臂端点引出；先画线后画角色，线头会被躯干压住，接点更干净。
-    UA, AC = (1.90, 4.55), (12.55, 4.55)
+    UA, AC = (1.90, 4.92), (12.55, 4.92)
     for n in names:
         d.line(UA[0], UA[1], BX - 1.375, P[n][1], line_w=0.8)
     d.line(AC[0], AC[1], BX + 1.375, P["文本内容提炼"][1], line_w=0.8)
